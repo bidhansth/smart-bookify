@@ -1,0 +1,375 @@
+.admin-section{
+  display: flex;
+  font-size: 1.4rem;
+}
+.admin--navbar {
+  background: #F9D1D1;
+  flex: 0 1 260px;
+  overflow: hidden;
+  min-height: 100vh;
+}
+.admin--navbar-pic{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 260px;
+  width: 260px;
+  margin-top:2rem;
+  margin-bottom: 10px;
+  padding: 35px;
+
+}
+.admin--navbar-pic img{
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  object-fit: cover;
+}
+.admin--navbar-pic i{
+  font-size: 8rem;
+}
+.admin--body {
+  display: flex;
+  flex-direction: column;
+  flex: 6;
+}
+.admin--main {
+  display: flex;
+  flex-direction: row;
+}
+.admin--main > article {
+  flex: 1;
+  min-height: 80vh;
+}
+.admin--main > aside {
+  flex: 1;
+}
+.admin--body header {
+  background: #FFB7B7;
+  height: 12vh;
+  font-size: 3rem;
+  font-weight: bold;
+}
+.admin--body header, article, aside {
+  padding: 1em;
+}
+.admin--navbar-list a {
+  color: black;
+  text-decoration: none;
+  display: block;
+  padding: 15px 10px 15px 20px;
+  border-left: 4px solid #F9D1D1;
+}
+.admin--navbar-list a:hover{
+  background-color: white;
+  border-left: 4px solid #FC9292;
+  border-radius: 0px 40px 40px 0px;
+}
+.admin--navbar-list{
+  list-style-type: none;
+  padding: 0;
+  font-weight: bold;
+  font-size: 1.6rem;
+}
+.bx{
+  display: inline !important;
+  padding-right: 10px;
+}
+.admin--new-clients{
+  background-color: #F9D1D150;
+  flex: 1;
+  padding: 30px;
+  border-radius: 20px;
+}
+.admin--new-clients h1, .admin--appointments h1{
+  color: #FF1515;
+  margin-bottom: 25px;
+  font-weight: 500;
+}
+.admin--new-clients table{
+  width: 100%;
+}
+.admin--appointments{
+  height: 80vh;
+  background-color: #FDF2F2;
+  padding: 30px;
+  border-radius: 20px;
+}
+.admin--count{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+  background-color: #FFF6F2;
+  flex: 0 1 270px;
+  margin-top: 50px;
+  border-radius: 40px;
+  text-align: center;
+  align-self: flex-end;
+}
+.admin--count img{
+  position: relative;
+  bottom: 30px;
+  mix-blend-mode: darken;
+}
+.admin--body th{
+  padding-bottom: 15px;
+  text-align: left;
+}
+.admin--settings{
+  width: 40vw;
+}
+.admin--settings-text{
+  font-size: 1.6rem;
+  padding-bottom: 50px;
+  font-weight: 500;
+}
+.admin--settings a{
+  display: block;
+  font-size: 1.4rem;
+  padding: 15px 30px;
+  border: 1px solid #F9D1D1;
+  border-radius: 15px;
+  color: black;
+  text-decoration: none;
+  font-weight: 500;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  min-width: fit-content;
+  width: 50%;
+}
+.admin--settings-cancel{
+  border-radius: 8px;
+  width: 49%;
+  height: 40px;
+  color: black;
+  border: 1px solid #FC9292;
+  font-size: 1.4rem;
+  margin-top: 50px;
+  float: right;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.admin--settings-cancel:hover{
+  cursor: pointer;
+}
+.admin--settings-submit{
+  width: 49% !important;
+}
+.admin--settings-edit input[type=text],
+.admin--settings-edit input[type=email],
+.admin--settings-edit input[type=password]{
+  width: 80%;
+  height: 40px;
+  border: 2px solid #F2ADAD;
+  border-radius: 4px;
+  font-size: 1.4rem;
+  padding-left: 20px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  outline: none;
+}
+.admin--settings-edit input[type=submit]{
+  border-radius: 8px;
+  width: 49%;
+  height: 40px;
+  background-color: #FC9292;
+  color: white;
+  border: none;
+  font-size: 1.4rem;
+  margin-top: 50px;
+}
+.admin--settings-edit input[type=submit]:hover{
+  cursor: pointer;
+}
+.profile-picture--frame{
+  width: 250px;
+  border-radius: 20px;
+  background-color: gray;
+  height: 250px;
+}
+.profile-picture--frame img{
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  z-index: 1;
+  object-fit: cover;
+}
+.profile-picture--frame p{
+  height: 250px;
+}
+.profile-picture--bar{
+  height: 40px;
+  position: relative;
+  z-index: 2;
+  bottom: 40px;
+  width: 100%;
+  border-radius: 0 0 20px 20px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #D9D9D9E6;
+  visibility: hidden;
+}
+.profile-picture--frame:hover .profile-picture--bar{
+  visibility: visible;
+}
+.profile-picture--bar a{
+  text-decoration: none;
+  font-size: 1.4rem;
+}
+.profile-picture--img{
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.profile-picture--img i{
+  font-size: 5rem;
+}
+.admin--client-search{
+  display: flex;
+  justify-content: flex-end;
+}
+.admin--client-search input[type=search]{
+  font-size: 1.4rem;
+  border: 2px solid #F2ADAD;
+  border-radius: 4px;
+  padding-left: 10px;
+  outline: none;
+}
+.admin--pagination{
+  float: right;
+  margin: 15px 0;
+}
+.copy-url{
+  display: inline;
+}
+.copy-url a {
+  text-decoration: none;
+  color: gray;
+}
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 140px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 10%;
+  left: 250%;
+  margin-left: -75px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 1rem;
+}
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 40%;
+  left: -4%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent #555 transparent transparent;
+}
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+/* client view profile pic modal */
+.modal-pic {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 1;
+  padding: 2rem 6rem;
+  /* Centering */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  overflow: auto;
+  border-radius: 5px;
+  /* Add the drop shadow */
+  box-shadow: 0 0 10px 0 rgba(0,0,0,0.2), 0 5px 10px 0 rgba(0,0,0,0.19);
+}
+.modal-pic img{
+  object-fit: contain;
+  height: 400px;
+  box-shadow: 12px 12px 25px 2px gray;
+}
+.cancel-button {
+  background-color: #F2ADAD;
+  color: black;
+  font-size: 1.4rem;
+  font-weight: bold;
+  padding: 15px 25px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  text-decoration: none;
+  margin-top: 2rem;
+}
+.cancel-button:hover {
+  background-color: #fbd3d3;
+}
+/* dark mode */
+.dark {
+  background-color: #121212;
+  color: #BDC1C6 !important;
+}
+.dark .admin--navbar, .dark .admin--body header{
+  background-color: #282A2F;
+}
+.dark .admin--navbar a{
+  color: #BDC1C6;
+}
+.dark .admin--navbar a:hover{
+  color: black;
+}
+.dark input{
+  background-color: #313237;
+  color: white;
+}
+.dark .admin--settings-edit input[type=submit],
+.dark .admin--settings-cancel{
+  background-color: #DF6040;
+  color: black;
+}
+.dark .admin--new-clients{
+  background-color: #212121;
+}
+.dark .admin--new-clients a{
+  color: white;
+}
+.dark .admin--new-clients h1{
+  color: #DF6040;
+}
+.dark .admin--count{
+  background-color: #303236;
+}
+.dark .admin--count img{
+  mix-blend-mode: color-burn;
+}
+.dark .admin--count div{
+  background-color: #BDC1C6 !important;
+  color: black;
+}
+.dark .admin--settings a{
+  color: white;
+}
+.dark .modal-pic{
+  background-color: #4a4a4a;
+}

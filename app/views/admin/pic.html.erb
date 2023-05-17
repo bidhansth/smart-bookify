@@ -1,0 +1,10 @@
+<%= turbo_frame_tag "modal" do %>
+  <div class="modal-pic">
+    <% if @client.profile_picture.attached? %>
+      <%= image_tag @client.profile_picture %>
+    <% else %>
+      No Profile Picture
+    <% end %>
+    <%= link_to "Close", admin_clients_path, data: { controller: "modals", action: "modals#close" }, class: "cancel-button" %>
+  </div>
+<% end %>

@@ -1,0 +1,37 @@
+<main class="forgot-password">
+  <div class="forgot-password--header">
+    <h1>Forgot password</h1>
+  </div>
+  <div class="forgot-password--main">
+    <div class="forgot-password--main-div">
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+
+        <div class="forgot-password--text">
+          Enter your email and we'll send you a link to reset your password.
+        </div>
+
+        <div class="field">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Enter your email address" %>
+        </div>
+
+        <% if resource.errors.any? %>
+          <div class= "forgot-password--error" id="error_explanation" data-turbo-cache="false">
+              <% resource.errors.full_messages.each do |message| %>
+                <%= message %>
+              <% end %>
+          </div>
+        <% end %>
+
+        <div class="actions">
+          <%= f.submit "Send me reset password instructions" %>
+        </div>
+      <% end %>
+      
+      <div class="forgot-password--back">
+          <i class='bx bx-arrow-back'></i>
+          <%= link_to "Back to Log in", new_session_path(resource_name) %>
+        </div>
+
+    </div>
+  </div>
+</main>

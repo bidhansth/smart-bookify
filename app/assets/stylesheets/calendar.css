@@ -1,0 +1,253 @@
+.simple-calendar table{
+  border-spacing: 25px 15px;
+}
+.next-month, .prev-month a{
+  visibility: hidden;
+}
+.user-section{
+  display: flex;
+  font-size: 1.2em;
+  min-height: 100vh;
+  overflow: hidden;
+}
+.user-sidebar{
+  display: flex;
+  flex: 0 1 400px;
+  background-color: #EE6D6D;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 9rem;
+}
+.user-sidebar h2{
+  color: white;
+}
+.user-sidebar h4{
+  color: white;
+  font-weight: normal;
+  margin-top: 10px;
+}
+.user-main{
+  flex: 4;
+  margin-top: 30px;
+  margin-left: 30px;
+  font-size: 1.5rem;
+}
+.user-main-body{
+  display: flex;
+  margin-top: 50px;
+}
+.user-calendar{
+  display: flex;
+  flex: 4;
+  flex-direction: column;
+  align-items: center;
+}
+.user-calendar-body{
+  display: flex;
+  flex-direction: column;
+}
+.user-calendar-header{
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+.user-calendar .calendar-title{
+  color: red;
+  font-weight: bold;
+}
+.user-calendar td{
+  width: 70px;
+  height: 70px;
+  text-align: center;
+}
+.user-calendar .calendar-heading{
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+.user-calendar .calendar-heading a{
+  margin: 0 15px;
+  border-radius: 100px;
+  background-color: #F9D1D180;
+  display: inline-block;
+  width: 49px;
+  text-align: center;
+  font-weight: bold;
+}
+.user-calendar th{
+  font-weight: normal;
+  padding-bottom: 10px;
+}
+.user-calendar thead{
+  color: gray;
+}
+.user-calendar a{
+  text-decoration: none;
+  color: black;
+  /*background-color: #F9D1D1;*/
+  border-radius: 100px;
+  padding: 10px;
+}
+.past{
+  background-color: unset !important;
+}
+.past a{
+  color: lightgray;
+  pointer-events: none;
+  cursor: default;
+}
+.has-events{
+  background-color: pink;
+  border-radius: 100px;
+}
+.user-timeslot{
+  flex: 2;
+}
+.user-timeslot-page{
+  display: flex;
+  flex-direction: column;
+  min-height: 90vh;
+}
+.user-timeslot-header{
+  color: gray;
+  margin: 80px 10px 30px 10px;
+  width: 300px;
+  text-align: center;
+}
+.user-timeslot-body{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 70vh;
+  overflow-y: scroll;
+}
+.user-time-slot{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  height: 55px;
+  width: 300px;
+  border: 1px solid #F2ADAD;
+  margin: 10px;
+  box-shadow: 0 5px 10px #888888;
+}
+.user-time-slot a{
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+}
+.user-booking{
+  font-size: 1.5rem;
+  max-width: 50vw;
+  padding: 7rem 1rem 1rem 14rem;
+}
+.user-booking label{
+  display: block;
+  margin-bottom: 5px;
+  margin-top: 30px;
+}
+.user-booking label::after {
+  content: " *" ;
+  color: red ;
+  
+}
+.user-booking input[type=text], .user-booking input[type=email]{
+  font-size: 1.4rem;
+  outline: none;
+  border: 1px solid #F9D1D1;
+  box-shadow: 0 5px 5px lightgray;
+  height: 45px;
+  padding-left: 20px;
+  width: 80%;
+}
+.user-booking textarea{
+  font-size: 1.4rem;
+  outline: none;
+  border: 1px solid #F9D1D1;
+  box-shadow: 0 5px 5px lightgray;
+  height: 100px;
+  padding-left: 20px;
+  width: 80%;
+  padding-top: 10px;
+}
+.user-booking input[type=submit]{
+  border-radius: 8px;
+  width: 100%;
+  height: 40px;
+  background-color: #F9D1D1;
+  color: black;
+  border: none;
+  font-size: 1.2rem;
+  margin-top: 50px;
+  font-weight: 500;
+}
+.user-booking input[type=submit]:hover{
+  cursor: pointer;
+}
+.booking-confirm{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.4rem;
+  margin-top: 70px;
+}
+.booking-confirm img{
+  width: 300px;
+}
+.booking-confirm h1{
+  margin-top: 40px;
+}
+.booking-confirm h4{
+  margin-top: 40px;
+  font-weight: normal;
+}
+.booking-details{
+  display: flex;
+}
+.booking-sidebar{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 0 1 400px;
+  border-right: 1px solid gray;
+  padding: 40px;
+  padding-top: 155px;
+  min-height: 100vh;
+  overflow: hidden;
+  font-size: 1.4rem;
+}
+.booking-sidebar h4{
+  font-weight: normal;
+  color: gray;
+  margin-bottom: 20px;
+  width: 100%;
+}
+.booking-sidebar h2{
+  margin-bottom: 30px;
+}
+.booking-back{
+  border-radius: 8px;
+  height: 40px;
+  background-color: #F9D1D1;
+  color: black;
+  border: none;
+  font-size: 1.2rem;
+  margin-top: 50px;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 1 120px;
+}
+.booking-back a{
+  text-decoration: none;
+  color: black;
+}
+.booking-submit{
+  flex: 0 1 120px;
+  margin-left: 150px;
+}

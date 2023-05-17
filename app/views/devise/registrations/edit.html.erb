@@ -1,0 +1,83 @@
+<%= turbo_frame_tag "admin" do %>
+  <%= render partial: "shared/notice" %>
+  <%= render partial: "shared/alert" %>
+  <header>Profile</header>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <main class="admin--main">
+      <article>
+        <div class-"admin--settings">
+          <div class="admin--settings-edit">
+
+            <div class="field">
+              <%= f.label :name %><br />
+              <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+            </div>
+
+            <div class="field">
+              <%= f.label :profession %><br />
+              <%= f.text_field :profession, autocomplete: "profession" %>
+            </div>
+
+            <div class="field">
+              <%= f.label :contact_no %><br />
+              <%= f.text_field :contact_no, autocomplete: "contact_no" %>
+            </div>
+
+            <div class="field">
+              <%= f.label :location %><br />
+              <%= f.text_field :location, autocomplete: "location" %>
+            </div>
+
+            <div class="field">
+              <%= f.label :email %><br />
+              <%= f.email_field :email, autocomplete: "email" %>
+            </div>
+
+            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+              <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+            <% end %>
+
+            <div class="field">
+              <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+              <%= f.password_field :current_password, autocomplete: "current-password" %>
+            </div>
+
+            <% if resource.errors.any? %>
+              <div class= "forgot-password--error" id="error_explanation" data-turbo-cache="false">
+                  <% resource.errors.full_messages.each do |message| %>
+                    <%= message %>
+                  <% end %>
+              </div>
+            <% end %>
+
+            <div class="actions">
+              <%= f.submit "Save" %>
+              <%= link_to "Cancel", authenticated_root_path, class:'admin--settings-cancel', method: :get %>
+            </div>
+
+            <!--h3>Cancel my account</h3>
+            <div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
+            <%= link_to "Back", :back %>-->
+          </div>
+        </div>
+      </article>
+      <aside style="display:flex; justify-content:center;">
+        <div class="profile-picture--frame">
+          <div class="profile-picture--img">
+            <% if current_client.profile_picture.attached? %>
+              <%= image_tag current_client.profile_picture %>
+          </div>
+          <div class="profile-picture--bar">
+            <%= link_to purge_profile_picture_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+              <i class='bx bx-trash'></i>
+            <% end %>
+            <% else %>
+              <i class='bx bx-image-add'></i>
+              <%= f.file_field :profile_picture %>
+            <% end %>
+          </div>
+        </div>
+      </aside>
+    </main>
+  <% end %>
+<% end %>

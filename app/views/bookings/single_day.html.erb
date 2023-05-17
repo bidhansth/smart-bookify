@@ -1,0 +1,16 @@
+<%= turbo_frame_tag "timeslots" do %>
+  <div class="user-timeslot-page">
+    <div class="user-timeslot-header">
+      <%= @date2.strftime("%a, %b %d, %Y") %>
+    </div>
+    <div class="user-timeslot-body">
+      <% @timeslots.each do |timeslot| %>
+        <div class="user-time-slot">
+          <%= link_to newww_booking_path(id: timeslot.id, client_id: @client_id), data: { turbo_frame: "_top" } do %>
+            <%= timeslot.start_time.strftime('%l:%M %p') %> - <%= (timeslot.start_time+30.minutes).strftime('%l:%M %p') %>
+          <% end %>
+        </div>    
+      <% end %>
+    </div>
+  </div>
+<% end %>

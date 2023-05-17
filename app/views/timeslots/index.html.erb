@@ -1,0 +1,60 @@
+<%= turbo_frame_tag "admin" do %>
+  <%= render partial: "shared/notice" %>
+  <header>Time Slots</header>
+  <main class="admin--main">
+    <article style="flex:4;">
+      <div class="user-calendar">
+        <div class="user-calendar-header">
+          Provide your available time slots
+        </div>
+        <div class="user-calendar-body">
+          <%= month_calendar(events: @timeslots) do |date, timeslots| %>
+            <%= link_to date.day, timeslots_date_path(start_date: date, client_id: current_client.id), data: { turbo_frame: "timeslots" } %>
+          <% end %>
+      </div>
+    </article>
+    <aside style="flex:2;">
+      <div class="body-time-slot">
+        <div class="user-timeslot-header">
+          <%= @date.to_time.strftime("%a, %b %d, %Y") %>
+        </div>
+        <div class="show-time-slot">
+          <% (0..23).each do |hour| %>
+            <% (0..1).each do |half| %>
+              <% begin
+                yz = @date.to_date.strftime('%Y')
+                mz = @date.to_date.strftime('%m')
+                dz = @date.to_date.strftime('%d')
+              rescue
+                yz = Date.today.strftime('%Y')
+                mz = Date.today.strftime('%m')
+                dz = Date.today.strftime('%d')
+              end %>
+              <% time = Time.new(yz, mz, dz, hour, half * 30) %>
+              <% if Timeslot.where(date: @date, start_time: time, client_id: current_client.id).exists? %>
+                <% @tse = Timeslot.where(date: @date, start_time: time) %>
+                <% if @tse.first.is_confirm %>
+                  <div class="pick-time-slot pick-time-slot-disable"  data-start-time="<%= time.strftime("%H:%M") %>" data-end-time="<%= (time + 30.minutes).strftime("%H:%M") %>">
+                    <%= time.strftime("%H:%M") %> - <%= (time + 30.minutes).strftime("%H:%M") %>
+                  </div>
+                <% else %>
+                  <%= link_to timeslots_delete_path(id: @tse.first.id, date: @date) do %>
+                    <div class="pick-time-slot pick-time-slot-disable"  data-start-time="<%= time.strftime("%H:%M") %>" data-end-time="<%= (time + 30.minutes).strftime("%H:%M") %>">
+                      <%= time.strftime("%H:%M") %> - <%= (time + 30.minutes).strftime("%H:%M") %>
+                    </div>
+                  <% end %>
+                <% end %>
+              <% else %>
+                <%= link_to timeslots_time_path(start_time: time, date: @date) do %>
+                  <div class="pick-time-slot"  data-start-time="<%= time.strftime("%H:%M") %>" data-end-time="<%= (time + 30.minutes).strftime("%H:%M") %>">
+                    <%= time.strftime("%H:%M") %> - <%= (time + 30.minutes).strftime("%H:%M") %>
+                  </div>
+                <% end %>
+              <% end %>
+            <% end %>
+          <% end %>  
+        </div>
+      </div>    
+    </aside>
+  </main>
+<% end %>

@@ -1,0 +1,27 @@
+<%= turbo_frame_tag "client" do %>
+  <table>
+    <tr>
+      <th>S.N</th>
+      <th>Name</th>
+      <th>Date</th>
+      <th>Time</th>
+      <th>ID</th>
+      <th>Info</th>
+      <th>Status</th>
+    </tr>
+    <% sn = 1 %>
+    <% @upcoming_bookings.each do |booking| %>
+      <tr>
+        <td><%= sn %></td>
+        <td><%= booking.user_name %></td>
+        <td><%= booking.timeslot.date.strftime('%Y/%m/%d') %></td>
+        <td><%= booking.timeslot.start_time.strftime('%k:%M') %> - <%= (booking.timeslot.start_time+30.minutes).strftime('%k:%M') %></td>
+        <td><%= booking.id %></td>
+        <td class="link-icon"><%= link_to clientdashboard_path, data: { turbo_method: :get, turbo_confirm: booking.description } do %>
+          <i class='bx bx-file'></i><% end %></td>
+        <td><span class="client-request-confirm">Confirmed</span></td>
+      </tr>
+    <% sn+=1 %>
+    <% end %>
+  </table>
+<% end %>

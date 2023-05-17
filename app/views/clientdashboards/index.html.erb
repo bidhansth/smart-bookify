@@ -1,0 +1,77 @@
+<div class="admin-section">
+  <%= render partial: "shared/clientnav" %>
+  <div class="admin--body">
+    <%= turbo_frame_tag "admin" do %>
+      <%= render partial: "shared/notice" %>
+      <%= render partial: "shared/alert" %>
+      <header style="background-color:unset;">
+        Hello <%= current_client.name %>!
+        <div class="copy-url tooltip">
+          <%= text_field_tag 'urlField', @url, style:"display: none;" %>
+          <%= link_to "javascript:urlCopy()" do %>
+            <i class='bx bx-copy-alt'></i>
+          <% end %>
+          <span class="tooltiptext" id="urlSpan">Copy to clipboard</span>
+        </div>
+      </header>
+      <main class="admin--main">
+        <article style="display:flex; flex-direction: column; flex: 3;">
+          <div style="display:flex;">
+            <div class="client-header"><%= link_to "Today", clientdashboard_path, data: { turbo_frame: "client" } %></div>
+            <div class="client-header"><%= link_to "Tomorrow", clientdashboard_tomorrow_path, data: { turbo_frame: "client" } %></div>
+            <div class="client-header"><%= link_to "Upcoming", clientdashboard_upcoming_path, data: { turbo_frame: "client" } %></div>
+          </div>
+          <div class="admin--new-clients todays">
+            <%= turbo_frame_tag "client" do %>
+              <table>
+                <tr>
+                  <th>S.N</th>
+                  <th>Name</th>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>ID</th>
+                  <th>Info</th>
+                  <th>Status</th>
+                </tr>
+                <% sn = 1 %>
+                <% @today_bookings.each do |booking| %>
+                  <tr>
+                    <td><%= sn %></td>
+                    <td><%= booking.user_name %></td>
+                    <td><%= booking.timeslot.date.strftime('%Y/%m/%d') %></td>
+                    <td><%= booking.timeslot.start_time.strftime('%k:%M') %> - <%= (booking.timeslot.start_time+30.minutes).strftime('%k:%M') %></td>
+                    <td><%= booking.id %></td>
+                    <td class="link-icon"><%= link_to clientdashboard_path, data: { turbo_method: :get, turbo_confirm: booking.description } do %>
+                      <i class='bx bx-file'></i><% end %></td>
+                    <td><span class="client-request-confirm">Confirmed</span></td>
+                  </tr>
+                <% sn+=1 %>
+                <% end %>
+              </table>
+            <% end %>
+        </div>
+        </article>
+        <aside style="flex:2; display: flex; flex-direction: column;">
+          <div class="client-header">Request</div>
+          <div class="admin--new-clients">
+            <% if @bookings.empty? %>
+              <%= "No booking requests" %>
+            <% else %>
+              <table>
+                <% @bookings.each do |booking| %>
+                  <tr>
+                    <td><%= booking.user_name %><br><span class="client-request-time"><%= booking.timeslot.start_time.strftime('%Y/%m/%d, %k:%M') %></span></td>
+                    <td class="link-icon"><%= link_to clientdashboard_path, data: { turbo_method: :get, turbo_confirm: booking.description } do %>
+                      <i class='bx bx-file'></i><% end %></td>
+                    <td><%= link_to "Confirm", accept_booking_path(id: booking.id), class: 'client-request-confirm' %></td>
+                    <td><%= link_to "Decline", decline_booking_path(id: booking.id), class: 'client-request-decline' %></td>
+                  </tr>
+                <% end %>
+              </table>
+            <% end %>
+          </div>
+        </aside>
+      </main>
+    <% end %>
+  </div>
+</div>

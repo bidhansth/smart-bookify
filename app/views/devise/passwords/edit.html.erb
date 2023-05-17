@@ -1,0 +1,46 @@
+<main class="forgot-password">
+  <div class="forgot-password--header">
+    <h1>New password</h1>
+  </div>
+  <div class="forgot-password--main">
+    <div class="forgot-password--main-div">
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+        <%= f.hidden_field :reset_password_token %>
+
+        <div class="forgot-password--text">
+          Enter New Password<br>
+          <span>
+            This password will be used at your next login
+          </span>
+        </div>
+
+        <div class="field">
+        <%= f.label :password, "Password" %>
+          <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password_confirmation, "Confirm password" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        </div>
+
+        <% if resource.errors.any? %>
+          <div class= "forgot-password--error" id="error_explanation" data-turbo-cache="false">
+              <% resource.errors.full_messages.each do |message| %>
+                <%= message %>
+              <% end %>
+          </div>
+        <% end %>
+
+        <div class="actions">
+          <%= f.submit "Reset Password" %>
+        </div>
+
+        <div class="forgot-password--back">
+          <i class='bx bx-arrow-back'></i>
+          <%= link_to "Back to Log in", new_session_path(resource_name) %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</main>

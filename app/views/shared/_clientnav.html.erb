@@ -1,0 +1,26 @@
+<nav class="admin--navbar">
+  <div class="admin--navbar-pic">
+    <% if current_client.profile_picture.attached? %>
+      <%= image_tag current_client.profile_picture %>
+    <% else %>
+      <i class='bx bx-user-circle' ></i>
+    <% end %>
+  </div>
+  <ul class="admin--navbar-list">
+    <%= link_to clientdashboard_path do %>
+      <li><i class='bx bx-grid-alt'></i>Dashboard</li>
+    <% end %>
+    <%= link_to admin_profile_path, data: { turbo_frame: "admin" } do %>
+      <li><i class='bx bx-message-alt-edit'></i>Profile</li>
+    <% end %>
+    <%= link_to timeslots_path, data: { turbo_frame: "admin" } do %>
+      <li><i class='bx bx-group' ></i>Timeslots</li>
+    <% end %>
+    <%= link_to admin_settings_path, data: { turbo_frame: "admin" } do %>
+      <li><i class='bx bx-cog' ></i>Settings</li>
+    <% end %>
+    <%= link_to destroy_client_session_path, data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to Log Out?' } do %>
+      <li><i class='bx bx-log-out' ></i>Logout</li>
+    <% end %>
+  </ul>
+</nav>

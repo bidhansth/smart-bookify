@@ -1,0 +1,17 @@
+<%= turbo_frame_tag "admin" do %>
+  <header>Settings</header>
+    <main class="admin--main">
+      <article>
+        <div class="admin--settings">
+          <%= link_to "Change Password", verify_adminpassword_path %><br>
+          <% if current_client.is_admin %>
+            <% if cookies[:theme] == "dark" %>
+              <%= link_to "Light Mode", set_theme_path(theme: 'light') %>
+            <% else %>
+              <%= link_to "Dark Mode", set_theme_path(theme: 'dark') %>
+            <% end %>
+          <% end %>
+        </div>
+      </article>
+    </main>
+<% end %>

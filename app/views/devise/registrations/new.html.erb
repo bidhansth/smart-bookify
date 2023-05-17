@@ -1,0 +1,47 @@
+<div class="box2">
+  <div class="top">
+    <header2>Create New Account</header2>
+  </div>
+  <div class="detail top">
+    <p>Enter all the details</p>
+  </div>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="container2">
+      <div class="input-field2">
+        <%= f.text_field :name, autocomplete: "name", class: "input2", placeholder: "Enter your Name", required: true %>
+      </div>
+      <div class="input-field2">
+        <%= f.email_field :email, autocomplete: "email", class: "input2", placeholder: "Email", required: true %>
+      </div>
+      <div class="input-field2">
+        <%= f.text_field :contact_no, autocomplete: "contact_no", class: "input2", placeholder: "Contact no", required: true %>
+      </div>
+      <div class="input-field2">
+        <%= f.text_field :profession, autocomplete: "profession", class: "input2", placeholder: "Profession", required: true %>
+      </div>
+      <div class="input-field2">
+        <%= f.text_field :location, autocomplete: "location", class: "input2", placeholder: "Location", required: true %>
+      </div>
+      <div class="input-field2">
+     
+        <%= f.password_field :password, autocomplete: "new-password", class: "input2", placeholder: "Password", required: true %>
+      </div>
+      <div class="input-field2">
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input2", placeholder: "Confirm Password", required: true %>
+      </div>
+      <div class="bottom2">
+        <div class="left2">
+        
+          <%= f.submit "Create", class: "submit2" %>
+        </div>
+        <div class="right2">
+          
+          <%= link_to "Cancel", new_client_session_path, class:"submit2"%>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+
+

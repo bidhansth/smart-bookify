@@ -1,0 +1,100 @@
+/* anjan */
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+}
+.container {
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    padding: 0 15px 0 15px;
+}
+.span2{
+    color: black;
+    font-size: 60px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0 10px 0;
+}
+.header-class {
+    color: #FF5656E5;
+    font-size: 60px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+.input{
+    height: 64px;
+    width: 100%;
+    font-size: large;
+    border: none;
+     outline: none;  
+     /* padding-left:10px;  */
+     margin:20px 0px; 
+      padding-left: 20px; 
+     border: 1px solid #F9D1D1; 
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.input-field{
+    display: flex;
+    flex-direction: column;
+}
+.input-field ::-webkit-input-placeholder{
+  color:#F9D1D1;
+  font-size: 20px;
+  font-weight: 500;
+}
+.submit{
+  border: none;
+  background-color: #F9D1D1;
+  border-radius: 10px;
+  font-size: 20px;
+  height: 45px;
+  outline: none;
+  cursor: pointer;
+  margin-top: 20px;
+}
+.bottom{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 20px;
+  font-weight: 400;
+  margin-top:50px;
+}
+.left {
+  display:flex;
+}
+.check {
+  margin-right:10px;
+}
+.link{
+  color:red;
+  text-decoration: none;
+  font-size: 20px;
+}
+.register{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top:200px;
+  font-size: 20px;
+}
+ /* for error message */
+ .login-alert{
+  display: flex;
+  align-items: center;
+  background: #FF5656;
+  justify-content: center;
+  height:64px;
+  font-size: 20px;
+  color:#ffffff;
+ }
+ .login-alert .bx{
+  font-size: 40px;
+  padding:10px;
+ }

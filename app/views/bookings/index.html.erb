@@ -1,0 +1,33 @@
+<div class="user-section">
+  <div class="user-sidebar">
+    <div class="admin--navbar-pic">
+      <% if @client.profile_picture.attached? %>
+        <%= image_tag @client.profile_picture %>
+      <% else %>
+        <i class='bx bx-user-circle' ></i>
+      <% end %>
+    </div>
+    <h2><%= @client.name %></h2>
+    <h4><%= @client.profession %></h4>
+  </div>
+  <div class="user-main">
+    <%= turbo_frame_tag "calendar" do %>
+      <div class="user-main-body">
+        <div class="user-calendar">
+          <div class="user-calendar-header">
+            Select a date & time
+          </div>
+          <div class="user-calendar-body">
+            <%= month_calendar(events: @timeslots) do |date, timeslots| %>
+              <%= link_to date.day, single_day_path(date: date, client_id: @client.id), data: { turbo_frame: "timeslots" } %>
+            <% end %>
+          </div>
+        </div>
+        <div class="user-timeslot">
+          <%= turbo_frame_tag "timeslots" do %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="booking-details">
+  <div class="booking-sidebar">
+      <h2>30 mins meeting with <%= @client.name %></h2>
+      <h4><i class='bx bx-time'></i><%= @timeslot.start_time.strftime('%k:%M') %> - <%= (@timeslot.start_time+30.minutes).strftime('%k:%M') %></h4>
+      <h4><i class='bx bx-calendar'></i> <%= @timeslot.date.to_time.strftime("%a, %b %d %Y") %></h4>
+      <h4><i class='bx bx-globe'></i> Nepal Time</h4>
+    </div>
+  <div class="user-booking" style="flex:4;">
+    <%= turbo_frame_tag "calendar" do %>
+      <h1>Enter Details</h1>
+      <%= render "form", booking: @booking %>
+    <% end %>
+  </div>
+</div>

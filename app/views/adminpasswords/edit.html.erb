@@ -1,0 +1,32 @@
+<%= turbo_frame_tag "admin" do %>
+  <header>Settings</header>
+    <main class="admin--main">
+      <article>
+        <div class-"admin--settings">
+          <div class="admin--settings-text">
+            Change your Password
+          </div>
+          <div class="forgot-password--main-div">
+            <%= form_with model: current_client, url: edit_adminpassword_path do |form| %>
+              <%= form.label :password %>
+              <%= form.password_field :password, class: "form-control" %>
+
+              <%= form.label :password_confirmation %>
+              <%= form.password_field :password_confirmation, class: "form-control" %>
+
+              <% if form.object.errors.any? %>
+                <div class="alert alert-danger forgot-password--error">
+                  <% form.object.errors.full_messages.each do |message| %>
+                    <div><%= message %></div>
+                  <% end %>
+                </div>
+              <% end %>
+
+              <%= form.submit "Change Password", class: 'admin--settings-submit' %>
+
+              <%= link_to "Cancel", admin_settings_path, class:'admin--settings-cancel', method: :get %>
+            <% end %>
+        </div>
+      </article>
+    </main>
+<% end %>

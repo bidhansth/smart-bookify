@@ -1,0 +1,23 @@
+<%= turbo_frame_tag "admin" do %>
+  <%= render partial: "shared/notice" %>
+  <%= render partial: "shared/alert" %>
+  <header>Settings</header>
+    <main class="admin--main">
+      <article>
+        <div class-"admin--settings">
+          <div class="admin--settings-text">
+            Please Verify your Password
+          </div>
+          <div class="forgot-password--main-div">
+            <%= form_with url:verifier_adminpassword_path do |f| %>
+              <%= f.label :verify_password, "Enter Current Password" %>
+              <%= f.password_field :verify_password %>
+              <%= f.submit "Verify", class:'admin--settings-submit' %>
+              <%= link_to "Cancel", admin_settings_path, class:'admin--settings-cancel', method: :get %>
+            <% end %>
+          </div>
+          
+        </div>
+      </article>
+    </main>
+<% end %>

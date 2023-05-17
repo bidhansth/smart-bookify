@@ -1,0 +1,11 @@
+<div style="font-size: 1.4rem;">
+  <p>
+    Hello <strong><%= @booking.user_name %>,</strong>
+    <br><br>
+    Your appointment with <strong><%= @client.name %></strong> at <strong><%= @booking.timeslot.start_time.strftime('%l:%M %p') %></strong> on <strong><%= @booking.timeslot.date.to_time.strftime("%a, %b %d %Y") %></strong> has been accepted.
+    <br>
+    Thank You.<br><br>
+    Regards,<br>
+    Smart Bookify
+  </p>
+</div>

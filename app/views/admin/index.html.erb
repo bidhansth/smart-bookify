@@ -1,0 +1,74 @@
+<div class="admin-section <%= cookies[:theme] %>">
+  <%= render partial: "shared/navbar" %>
+
+  <div class="admin--body">
+    <%= turbo_frame_tag "admin" do %>
+      <%= render partial: "shared/notice" %>
+      <%= render partial: "shared/alert" %>
+
+      <header style="background-color:unset;">
+        Hello <%= current_client.name %>!
+        <div class="copy-url tooltip">
+          <%= text_field_tag 'urlField', @url, style:"display: none;" %>
+          <%= link_to "javascript:urlCopy()" do %>
+            <i class='bx bx-copy-alt'></i>
+          <% end %>
+          <span class="tooltiptext">Copy to clipboard</span>
+        </div>
+      </header>
+      <main class="admin--main">
+        <article style="display:flex; flex-direction: column;">
+          <div class="admin--new-clients" style="max-height: 45vh; overflow:hidden;">
+            <h1>New Clients</h1>
+            <table>
+              <tr>
+                <th>S.N</th>
+                <th>Name</th>
+                <th>Created On</th>
+                <th>ID</th>
+              </tr>
+              <% sn = 1 %>
+              <% @clients.each do |client| %>
+                <tr>
+                  <td><%= sn %></td>
+                  <td><%= client.name %></td>
+                  <td><%= client.created_at.strftime('%Y/%m/%d') %></td>
+                  <td><%= client.id %></td>
+                </tr>
+                <% sn+=1 %>
+              <% end %>
+            </table>
+          </div>
+          <div class="admin--count">
+            <%= image_tag "count" %>
+            <h4>Total Clients</h4>
+            <div style="background-color:white; font-weight:bold; padding: 20px; border-radius: 20px; margin-top:20px; width: 130px"><%= @total_clients %></div>
+          </div>
+        </article>
+        <aside>
+          <div class="admin--new-clients" style="height: 80vh;">
+            <h1>Today's Appointments</h1>
+            <table>
+              <tr>
+                <th>S.N</th>
+                <th>Time</th>
+                <th>From</th>
+                <th>To</th>
+              </tr>
+              <% sn = 1 %>
+              <% @todays.each do |today| %>
+                <tr>
+                  <td><%= sn %></td>
+                  <td><%= today.start_time.strftime('%k:%M') %> to <%= (today.start_time+30.minutes).strftime('%k:%M') %> </td>
+                  <td><%= today.bookings.first.user_name %></td>
+                  <td><%= today.client.name %></td>
+                </tr>
+                <% sn+=1 %>
+              <% end %>
+            </table>
+          </div>
+        </aside>
+      </main>
+    <% end %>
+  </div>
+</div>

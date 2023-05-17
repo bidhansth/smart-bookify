@@ -1,0 +1,50 @@
+<%= turbo_frame_tag "admin" do %>
+  <%= render partial: "shared/notice" %>
+  <%= render partial: "shared/alert" %>
+  <header>Client List</header>
+  <main class="admin--main">
+    <article>
+      <div class="admin--new-clients" style="min-height:80vh;">
+        <div class="admin--client-search">
+          <%= search_form_for @q, url: :admin_clients, data: {turbo_frame: :results} do |f| %>
+            <%= f.search_field :name_or_contact_no_or_email_cont, oninput: 'this.form.requestSubmit()', autocomplete: 'off', placeholder: "Search" %>
+          <% end %>
+        </div>
+
+        <%= turbo_frame_tag :results do %>
+          <div class="admin--pagination">
+            <%== pagy_nav(@pagy) %>
+          </div>
+          <table>
+            <tr>
+              <th>S.N</th>
+              <th>Name</th>
+              <th>Created On</th>
+              <th>ID</th>
+              <th>Contact</th>
+              <th>Email</th>
+              <th>Location</th>
+              <th>Photo</th>
+            </tr>
+            <% sn = 1 %>
+            <% @client_list.each do |client| %>
+              <tr>
+                <td><%= sn %></td>
+                <td><%= client.name %></td>
+                <td><%= client.created_at.strftime('%Y/%m/%d') %></td>
+                <td><%= client.id %></td>
+                <td><%= client.contact_no %></td>
+                <td><%= client.email %></td>
+                <td><%= client.location %></td>
+                <td><%= link_to "View", admin_pic_path(id: client.id), data: {turbo_frame: "modal"} %></td>
+                <td><% unless client.id == current_client.id %><%=link_to "Delete", delete_client_path(id: client.id), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %><% end %></td>
+              </tr>
+            <% sn+=1 %>
+            <% end %>
+          </table>
+          <% end %>
+        </div>
+      </article>
+  </main>
+  <%= turbo_frame_tag "modal" %>
+<% end %>
